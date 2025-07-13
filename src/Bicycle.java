@@ -1,5 +1,7 @@
 public class Bicycle {
     // PROPERTIES
+    private static int nextId = 1;
+    private int id;
     private String brand;
     private String model;
     private double maxSpeed;
@@ -7,10 +9,11 @@ public class Bicycle {
 
     // CONSTRUCTORS
     public Bicycle(){
-        //Empty constructor
+        this.id = nextId++;
     }
 
     public Bicycle(String brand, String model, double maxSpeed, boolean gears){
+        this.id = nextId++;
         this.brand = brand;
         this.model = model;
         this.maxSpeed = maxSpeed;
@@ -18,6 +21,10 @@ public class Bicycle {
     }
 
     // GETTER & SETTERS
+    public int getId(){
+        return id;
+    }
+
     public String getBrand() {
         return brand;
     }
@@ -52,8 +59,9 @@ public class Bicycle {
 
     // TO STRING
     @Override
-    public String toString(){
-        return "Brand: " + brand + " Model: " + model + " Max Speed: " + maxSpeed + " km/h, Gears: " + gears;
+    public String toString() {
+        String gearsText = gears ? "Includes gear shifter" : "Does not include gear shifter";
+        return "ID: " + id + " | " + "Brand: " + brand + " | " + "Model: " + model + " | " + "Max Speed: " + maxSpeed + " km/h" + " | " + "Gears: " + gearsText;
     }
 
     // METHODS
